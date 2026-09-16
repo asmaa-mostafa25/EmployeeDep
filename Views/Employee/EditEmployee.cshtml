@@ -1,0 +1,130 @@
+﻿@model EmployeeDep.ViewModels.EmployeeViewModel
+
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+
+<h1>Edit Employee</h1>
+
+<form asp-controller="Employee"
+      asp-action="EditEmployee"
+      method="post">
+
+    <div asp-validation-summary="ModelOnly"
+         class="text-danger">
+    </div>
+
+    <!-- Name -->
+
+    <div class="mb-3">
+
+        <label asp-for="Name"
+               class="form-label">
+        </label>
+
+        <input asp-for="Name"
+               class="form-control" />
+
+        <span asp-validation-for="Name"
+              class="text-danger">
+        </span>
+
+    </div>
+
+
+    <!-- Age -->
+
+    <div class="mb-3">
+
+        <label asp-for="Age"
+               class="form-label">
+        </label>
+
+        <input asp-for="Age"
+               class="form-control" />
+
+        <span asp-validation-for="Age"
+              class="text-danger">
+        </span>
+
+    </div>
+
+
+    <!-- Salary -->
+
+    <div class="mb-3">
+
+        <label asp-for="Salary"
+               class="form-label">
+        </label>
+
+        <input asp-for="Salary"
+               class="form-control" />
+
+        <span asp-validation-for="Salary"
+              class="text-danger">
+        </span>
+
+    </div>
+
+
+    <!-- Job Title -->
+
+    <div class="mb-3">
+
+        <label asp-for="JobTitle"
+               class="form-label">
+        </label>
+
+        <input asp-for="JobTitle"
+               class="form-control" />
+
+        <span asp-validation-for="JobTitle"
+              class="text-danger">
+        </span>
+
+    </div>
+
+
+    <!-- Department -->
+
+    <div class="mb-3">
+
+        <label asp-for="DepartmentId"
+               class="form-label">
+            Department
+        </label>
+
+        <select asp-for="DepartmentId"
+                asp-items="Model.Departments"
+                class="form-control">
+
+            <option value="">
+                -- Select Department --
+            </option>
+
+        </select>
+
+        <span asp-validation-for="DepartmentId"
+              class="text-danger">
+        </span>
+
+    </div>
+
+
+    <button type="submit"
+            class="btn btn-warning">
+        Save Changes
+    </button>
+
+    <a asp-controller="Employee"
+       asp-action="Index"
+       class="btn btn-secondary">
+        Back
+    </a>
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

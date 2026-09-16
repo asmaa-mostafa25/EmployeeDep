@@ -1,0 +1,44 @@
+﻿@model List<EmployeeDep.ViewModels.EmployeeWithDepartmentViewModel>
+
+@{
+    ViewData["Title"] = "Department Employees";
+}
+
+<h1>Department Employees</h1>
+
+<a asp-controller="Department"
+   asp-action="Index"
+   class="btn btn-secondary mb-3">
+    Back to Departments
+</a>
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Salary</th>
+            <th>Job Title</th>
+            <th>Department Name</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.Id</td>
+                <td>@employee.Name</td>
+                <td>@employee.Age</td>
+                <td>@employee.Salary</td>
+                <td>@employee.JobTitle</td>
+                <td>@employee.DepartmentName</td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>

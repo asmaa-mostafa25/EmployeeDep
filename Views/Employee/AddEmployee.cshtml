@@ -1,0 +1,97 @@
+﻿@model EmployeeDep.ViewModels.EmployeeViewModel
+
+@{
+    ViewData["Title"] = "Add Employee";
+}
+
+<h1>Add Employee</h1>
+
+<form asp-controller="Employee"
+      asp-action="AddEmployee"
+      method="post">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+
+        <input asp-for="Name" class="form-control" />
+
+        <span asp-validation-for="Name"
+              class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="Age" class="form-label"></label>
+
+        <input asp-for="Age"
+               type="number"
+               class="form-control" />
+
+        <span asp-validation-for="Age"
+              class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="Salary" class="form-label"></label>
+
+        <input asp-for="Salary"
+               type="number"
+               step="0.01"
+               class="form-control" />
+
+        <span asp-validation-for="Salary"
+              class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="JobTitle" class="form-label"></label>
+
+        <input asp-for="JobTitle"
+               class="form-control" />
+
+        <span asp-validation-for="JobTitle"
+              class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="DepartmentId"
+               class="form-label">
+            Department
+        </label>
+
+        <select asp-for="DepartmentId"
+                asp-items="Model.Departments"
+                class="form-control">
+
+            <option value="">-- Select Department --</option>
+
+        </select>
+
+        <span asp-validation-for="DepartmentId"
+              class="text-danger"></span>
+    </div>
+
+
+    <button type="submit"
+            class="btn btn-primary">
+        Add
+    </button>
+
+    <a asp-controller="Employee"
+       asp-action="Index"
+       class="btn btn-secondary">
+        Back
+    </a>
+
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

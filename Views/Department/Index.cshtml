@@ -1,0 +1,69 @@
+﻿@model List<EmployeeDep.ViewModels.DepartmentWithEmpCount>
+
+@{
+    ViewData["Title"] = "Departments";
+}
+
+<h1>Departments</h1>
+
+<a asp-controller="Department"
+   asp-action="AddDepartment"
+   class="btn btn-primary">
+    Add Department
+</a>
+
+<br />
+<br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Department Name</th>
+            <th>Manager Name</th>
+            <th>Number of Employees</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var department in Model)
+        {
+            <tr>
+                <td>@department.Id</td>
+                <td>@department.Name</td>
+                <td>@department.ManagerName</td>
+                <td>@department.EmpCount</td>
+
+                <td>
+                    <a asp-controller="Department"
+                       asp-action="EditDepartment"
+                       asp-route-id="@department.Id"
+                       class="btn btn-warning">
+                        Edit
+                    </a>
+
+                    <form asp-controller="Department"
+                          asp-action="DeleteDepartment"
+                          asp-route-id="@department.Id"
+                          method="post"
+                          style="display:inline;">
+
+                        <button type="submit"
+                                class="btn btn-danger">
+                            Delete
+                        </button>
+
+                    </form>
+
+                    <a asp-controller="Department"
+                       asp-action="ShowEmployees"
+                       asp-route-id="@department.Id"
+                       class="btn btn-info">
+                        Show Employees
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
